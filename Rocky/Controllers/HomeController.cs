@@ -93,8 +93,6 @@ namespace Rocky.Controllers
             HttpContext.Session.Set(WC.SessionCart, shoppingCarts);
             return RedirectToAction(nameof(Index));
         }
-
-
         public IActionResult Privacy()
         {
 

@@ -42,6 +42,19 @@
                                     <a class="dropdown-item" asp-area="" asp-controller="ApplicationType" asp-action="Index">Application Type</a>
                                 </li>
                                 <li><hr class="dropdown-divider"></li>
+                                @if (User.IsInRole(Rocky.WC.AdminRole))
+                                {
+                                    <li>
+                                        <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Create new admin acount</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Create new acount</a>
+                                    </li>
+                                }
+
                             </ul>
                         </li>
                         <li>
@@ -62,6 +75,8 @@
                             }
                         </li>
                     </ul>
+
+                    <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>
