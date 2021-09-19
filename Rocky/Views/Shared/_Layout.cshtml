@@ -27,40 +27,44 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                                Content Management
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="Index">Product</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Category" asp-action="Index">Category</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" asp-area="" asp-controller="ApplicationType" asp-action="Index">Application Type</a>
-                                </li>
-                                <li><hr class="dropdown-divider"></li>
-                                @if (User.IsInRole(Rocky.WC.AdminRole))
-                                {
+                        @if (User.IsInRole(WC.AdminRole))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                                    Content Management
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li>
-                                        <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Create new admin acount</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="Index">Product</a>
                                     </li>
-                                }
-                                else
-                                {
                                     <li>
-                                        <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Create new acount</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Category" asp-action="Index">Category</a>
                                     </li>
-                                }
+                                    <li>
+                                        <a class="dropdown-item" asp-area="" asp-controller="ApplicationType" asp-action="Index">Application Type</a>
+                                    </li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    @if (User.IsInRole(Rocky.WC.AdminRole))
+                                    {
+                                        <li>
+                                            <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Create new admin acount</a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Create new acount</a>
+                                        </li>
+                                    }
 
-                            </ul>
-                        </li>
+                                </ul>
+                            </li>
+                        }
+
                         <li>
                             @if (HttpContextAccessor.HttpContext.Session.Get<List<ShoppingCart>>(WC.SessionCart) != null)
                             {
-                                <a asp-action="Index" asp-controller="Cart" class="nav-link">
+                                <a asp-action="Index" asp-controller="Card" class="nav-link">
                                     @{
                                         var count = HttpContextAccessor.HttpContext.Session.Get<List<ShoppingCart>>(WC.SessionCart).Count;
                                     }
